@@ -15,6 +15,8 @@ namespace Hello_CSharp
             ifTesting(false);//Awesome, default options work the same, so this shouldn't be too bad
             ifTesting(false, true);
             fibbonachi(20);
+            boopLoop(15);
+            Console.Beep();
             Console.ReadKey();//This is annoying, ah well, might as well keep it for now ... though
         }
         static void helloWorld()
@@ -45,6 +47,13 @@ namespace Hello_CSharp
             lastB = temp;
             Console.WriteLine("Count "+count+" : "+lastA);
             return fibbonachi(numToCompute, count + 1, lastA, lastB);
+        }
+        static void boopLoop(int numOfBoops)
+        {
+            for(int i=0; i < numOfBoops; i++)
+            {
+                Console.WriteLine("Boop");
+            }
         }
     }
 }
