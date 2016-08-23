@@ -14,6 +14,7 @@ namespace Hello_CSharp
             ifTesting(true);
             ifTesting(false);//Awesome, default options work the same, so this shouldn't be too bad
             ifTesting(false, true);
+            fibbonachi(20);
             Console.ReadKey();//This is annoying, ah well, might as well keep it for now ... though
         }
         static void helloWorld()
@@ -32,6 +33,18 @@ namespace Hello_CSharp
             {
                 Console.WriteLine("Adversity is an opportunity for change.");
             }
+        }
+        static int fibbonachi(int numToCompute, int count=0, int lastA=1, int lastB=0)
+        {
+            if (numToCompute == count)
+            {
+                return lastA;
+            }
+            int temp = lastA;
+            lastA += lastB;
+            lastB = temp;
+            Console.WriteLine("Count "+count+" : "+lastA);
+            return fibbonachi(numToCompute, count + 1, lastA, lastB);
         }
     }
 }
