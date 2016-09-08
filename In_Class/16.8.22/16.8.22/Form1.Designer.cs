@@ -43,11 +43,11 @@
             this.num0 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.add = new System.Windows.Forms.Button();
+            this.subtract = new System.Windows.Forms.Button();
+            this.multiply = new System.Windows.Forms.Button();
+            this.divide = new System.Windows.Forms.Button();
+            this.compute_Button = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.clearAllButton = new System.Windows.Forms.Button();
@@ -217,66 +217,71 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button18);
-            this.panel2.Controls.Add(this.button17);
-            this.panel2.Controls.Add(this.button16);
-            this.panel2.Controls.Add(this.button15);
-            this.panel2.Controls.Add(this.button14);
+            this.panel2.Controls.Add(this.add);
+            this.panel2.Controls.Add(this.subtract);
+            this.panel2.Controls.Add(this.multiply);
+            this.panel2.Controls.Add(this.divide);
+            this.panel2.Controls.Add(this.compute_Button);
             this.panel2.Controls.Add(this.button13);
             this.panel2.Location = new System.Drawing.Point(189, 64);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(106, 212);
             this.panel2.TabIndex = 2;
             // 
-            // button18
+            // add
             // 
-            this.button18.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(3, 3);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(47, 150);
-            this.button18.TabIndex = 5;
-            this.button18.Text = "+";
-            this.button18.UseVisualStyleBackColor = true;
+            this.add.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.add.Location = new System.Drawing.Point(3, 3);
+            this.add.Name = "add";
+            this.add.Size = new System.Drawing.Size(47, 150);
+            this.add.TabIndex = 5;
+            this.add.Text = "+";
+            this.add.UseVisualStyleBackColor = true;
+			this.add.Click += new System.EventHandler(this.operator_Click);
             // 
-            // button17
+            // subtract
             // 
-            this.button17.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button17.Location = new System.Drawing.Point(56, 3);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(47, 47);
-            this.button17.TabIndex = 4;
-            this.button17.Text = "-";
-            this.button17.UseVisualStyleBackColor = true;
+            this.subtract.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subtract.Location = new System.Drawing.Point(56, 3);
+            this.subtract.Name = "subtract";
+            this.subtract.Size = new System.Drawing.Size(47, 47);
+            this.subtract.TabIndex = 4;
+            this.subtract.Text = "-";
+			this.subtract.UseVisualStyleBackColor = true;
+			this.subtract.Click += new System.EventHandler(this.operator_Click);
             // 
-            // button16
+            // multiply
             // 
-            this.button16.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(56, 56);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(47, 47);
-            this.button16.TabIndex = 3;
-            this.button16.Text = "×";
-            this.button16.UseVisualStyleBackColor = true;
+            this.multiply.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.multiply.Location = new System.Drawing.Point(56, 56);
+            this.multiply.Name = "multiply";
+            this.multiply.Size = new System.Drawing.Size(47, 47);
+            this.multiply.TabIndex = 3;
+            this.multiply.Text = "×";
+            this.multiply.UseVisualStyleBackColor = true;
+			this.multiply.Click += new System.EventHandler(this.operator_Click);
             // 
-            // button15
+            // divide
             // 
-            this.button15.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(56, 109);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(47, 47);
-            this.button15.TabIndex = 2;
-            this.button15.Text = "÷";
-            this.button15.UseVisualStyleBackColor = true;
+            this.divide.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.divide.Location = new System.Drawing.Point(56, 109);
+            this.divide.Name = "divide";
+            this.divide.Size = new System.Drawing.Size(47, 47);
+            this.divide.TabIndex = 2;
+            this.divide.Text = "÷";
+            this.divide.UseVisualStyleBackColor = true;
+			this.divide.Click += new System.EventHandler(this.operator_Click);
             // 
-            // button14
+            // compute_Button
             // 
-            this.button14.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(56, 162);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(47, 47);
-            this.button14.TabIndex = 1;
-            this.button14.Text = "=";
-            this.button14.UseVisualStyleBackColor = true;
+            this.compute_Button.Font = new System.Drawing.Font("Bauhaus 93", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compute_Button.Location = new System.Drawing.Point(56, 162);
+            this.compute_Button.Name = "compute_Button";
+            this.compute_Button.Size = new System.Drawing.Size(47, 47);
+            this.compute_Button.TabIndex = 1;
+            this.compute_Button.Text = "=";
+            this.compute_Button.UseVisualStyleBackColor = true;
+			this.compute_Button.Click += new System.EventHandler(this.displayResult);
             // 
             // button13
             // 
@@ -305,7 +310,8 @@
             this.clearAllButton.Size = new System.Drawing.Size(100, 47);
             this.clearAllButton.TabIndex = 12;
             this.clearAllButton.Text = "C/A";
-            this.clearAllButton.UseVisualStyleBackColor = true;
+			this.clearAllButton.UseVisualStyleBackColor = true;	
+			this.clearAllButton.Click += new System.EventHandler(this.clearData);
             // 
             // clearButton
             // 
@@ -345,6 +351,7 @@
             this.ResumeLayout(false);
             this.PerformLayout();
             this.clearButton.Click += new System.EventHandler(this.clearScreen);
+			//this.clearAllButton.Click+= new System.EventHandler(this.clearAllButton)
         }
 
         #endregion
@@ -364,11 +371,11 @@
         private System.Windows.Forms.Button num0;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button add;
+        private System.Windows.Forms.Button subtract;
+        private System.Windows.Forms.Button multiply;
+        private System.Windows.Forms.Button divide;
+        private System.Windows.Forms.Button compute_Button;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button clearAllButton;
@@ -376,4 +383,3 @@
         private System.Windows.Forms.Button button21;
     }
 }
-
