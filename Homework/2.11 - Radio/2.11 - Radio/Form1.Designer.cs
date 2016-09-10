@@ -262,7 +262,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Radio";
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
