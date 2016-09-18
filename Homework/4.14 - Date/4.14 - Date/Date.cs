@@ -11,7 +11,7 @@ namespace _4._14___Date
         public int Day { get; private set; }
         public int Month { get; private set; } 
         public int Year { get; private set; }
-        Date(int year, int month, int day)
+        public Date(int year, int month, int day)
         {
             Year = year;
             Month = month;
