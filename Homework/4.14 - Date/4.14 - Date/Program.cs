@@ -10,6 +10,7 @@ namespace _4._14___Date
     {
         static void Main(string[] args)
         {
+           
         }
     }
 }
