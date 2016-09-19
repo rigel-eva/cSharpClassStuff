@@ -16,5 +16,18 @@ namespace _14._6___Temperature_Conversions
         {
             InitializeComponent();
         }
+
+        private void tempConvert(object sender, EventArgs e)
+        {
+            double userInput;
+            if(double.TryParse(farIn.Text, out userInput))
+            {
+                celOut.Text =  $"{((userInput - 32) * (5.0 / 9.0)):N1}°C";
+            }
+            else
+            {
+                celOut.Text = "Please enter a valid value...";
+            }
+        }
     }
 }
