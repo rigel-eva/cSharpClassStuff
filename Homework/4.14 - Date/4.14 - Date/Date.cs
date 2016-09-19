@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _4._14___Date
 {
-    class Date
+    class Date//Welp Reusing the Class from class, no sense in recoding it.
     {
         public int Day { get; private set; }
         public int Month { get; private set; } 
