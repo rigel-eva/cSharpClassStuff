@@ -51,7 +51,7 @@
             this.inputBox.Name = "inputBox";
             this.inputBox.Size = new System.Drawing.Size(100, 20);
             this.inputBox.TabIndex = 1;
-            this.inputBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.runCheck);//This is unsightly ...
+            this.inputBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.runCheck);
             // 
             // label2
             // 
@@ -97,7 +97,7 @@
             this.Controls.Add(this.inputBox);
             this.Controls.Add(this.gameInfo);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Guess the Number Game";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
