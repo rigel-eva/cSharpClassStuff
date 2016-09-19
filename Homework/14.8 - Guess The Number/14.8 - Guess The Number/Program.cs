@@ -18,5 +18,6 @@ namespace _14._8___Guess_The_Number
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+        
     }
 }
