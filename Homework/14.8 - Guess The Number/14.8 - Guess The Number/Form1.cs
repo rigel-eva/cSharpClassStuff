@@ -56,13 +56,13 @@ namespace _14._8___Guess_The_Number
                 this.actingButton.Click += new System.EventHandler(this.regenerate);
                 return;//We don't want to execute the rest of the code here ...
             }
-            if (Math.Abs(guess - number) < 255)//If we are within spitting distance of it
+            if (Math.Abs(guess - number) < 230)//If we are within spitting distance of it and not at a value that makes the window freaking black
             {
                 this.BackColor = Color.FromArgb(255 - Math.Abs(guess - number),0,0);
             }
-            else
+            else//Otherwise ...
             {
-                this.BackColor = Color.Blue;
+                this.BackColor = Color.Blue;//Just make it blue ... no sense in making it darker otherwise ...
             }
         }
 
