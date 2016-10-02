@@ -29,19 +29,19 @@ namespace _5._29
                 return getInput(prompt);
             }
         }
-        static string box(int width, int height)//Well, might as well make a function for this ...
+        static string box(int width, int height,char character='*')//Well, might as well make a function for this ...
         {
             string returner = "";
 
-            returner += line(width, true);
+            returner += line(width, true,character);
             for(int i=0; i<height-2; i++)
             {
-                returner += line(width, false);
+                returner += line(width, false,character);
             }
-            returner += line(width, true);
+            returner += line(width, true,character);
             return returner;
         }
-        static string line(int width, bool solid = false)//And I want my code as dry as possible.
+        static string line(int width, bool solid = false, char character='*')//And I want my code as dry as possible.
         {
             string returner = "*";
             for(int i=0;i<width-2; i++)
