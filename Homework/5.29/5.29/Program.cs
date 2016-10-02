@@ -41,7 +41,7 @@ namespace _5._29
             returner += line(width, true,character);
             return returner;
         }
-        static string line(int width, bool solid = false, char character='*')//And I want my code as dry as possible.
+        static string line(int width, bool solid = false, char character='*')//And I want my code as dry as possible, so helper functions to the rescue!.
         {
             string returner = "*";
             for(int i=0;i<width-2; i++)
