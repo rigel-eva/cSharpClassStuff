@@ -28,18 +28,19 @@ namespace _6._20
         }
         static double piCalc(int terms)
         {
-            if (terms <=0)
+            return 4 * termCalc(terms);//Trying this out to see if this prevents the stack overflow error.   
+        }
+        static double termCalc(int terms)
+        {
+            if (terms <= 0)
             {
-                return 4;
-            }
-            else if ((terms+1) % 2 == 0)
-            {
-                return piCalc(terms - 1) - 4.0 / (1 + terms * 2);
+                return 1;
             }
             else
             {
-                return piCalc(terms - 1) + 4.0 / (1 + terms * 2);
+                return termCalc(terms - 1) + (Math.Pow(-1, terms) / (1 + terms * 2));
             }
+
         }
     }
 }
