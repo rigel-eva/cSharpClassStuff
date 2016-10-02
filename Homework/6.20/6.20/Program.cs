@@ -8,6 +8,20 @@ namespace _6._20
 {
     class Program
     {
+        /*Results:
+         * one digit of accuracy:        11
+         * Two digits of accuracy:      101
+         * Three Digits of accuracy:   1001
+         * Four Digits of accuracy:   10001
+         * Five Digits of accuracy:  100001
+         * 
+         * Note: Really wanted to use recursion on this one ... 
+         * but it turns out I eneded up with a stack overflow 
+         * error instead, so I had to go with the for loop. 
+         * Also, the weird buisness with the *4 was my attempt 
+         * to try to mittigate that error ... didn't really work
+         * out that way.
+         */
         static void Main(string[] args)
         {
             for (int i = 1; i < 6; i++)
@@ -32,15 +46,12 @@ namespace _6._20
         }
         static double termCalc(int terms)
         {
-            if (terms <= 0)
+            double returner = 0;
+            for(int i=0; i<terms; i++)
             {
-                return 1;
+                returner += (Math.Pow(-1, i) / (1 + i * 2));
             }
-            else
-            {
-                return termCalc(terms - 1) + (Math.Pow(-1, terms) / (1 + terms * 2));
-            }
-
+            return returner;
         }
     }
 }
