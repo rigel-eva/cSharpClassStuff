@@ -26,7 +26,7 @@ namespace _6._20
         {
             for (int i = 1; i < 6; i++)
             {
-                Console.WriteLine("Number of itterations to get " + i + " Digits of accuracy: " + piAccuracy(i));
+                Console.WriteLine("Number of itterations to get " + i + " Digits of accuracy: " + piAccuracy2(i));
             }
         }
         static int piAccuracy(int accuracy=1)
@@ -52,6 +52,21 @@ namespace _6._20
                 returner += (Math.Pow(-1, i) / (1 + i * 2));
             }
             return returner;
+        }
+        //Wanted to try to write an alternate method
+        static int piAccuracy2(int accuracy = 1)
+        {
+            int returner = 1;
+            double accVar = Math.Pow(.1, accuracy);//Freaking floating point errors...
+            //We don't care about the first bit; if the Next Value is Less Than our Accuracy Variable, we are done!; otherwise keep stepping
+            //for (; (Math.Pow(-1, returner) / (1 + 2 * returner))<accVar; returner++) ;
+            double output;
+            do
+            {
+                output = (Math.Pow(-1, returner) / (1 + 2 * returner));
+                returner++;
+            } while (output < accVar);
+            return returner; 
         }
     }
 }
