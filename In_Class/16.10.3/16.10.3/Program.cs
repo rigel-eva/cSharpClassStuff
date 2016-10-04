@@ -25,6 +25,7 @@ namespace _16._10._3
                                       ">");
                 } while (!int.TryParse(Console.ReadLine(), out selection));
             } while ((selection < 1 || selection > 3));
+            //So I could write a switch here, but ... essentially the only thing that's different from c++ is that you can't do weird things ... like not having breaks.
             //do
             //{
             //    Console.Write("Eneter the interest rate as a decimal Value: ");
