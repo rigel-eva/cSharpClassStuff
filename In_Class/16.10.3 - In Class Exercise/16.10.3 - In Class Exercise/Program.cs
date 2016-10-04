@@ -12,8 +12,9 @@ namespace _16._10._3___In_Class_Exercise
         
     static void Main(string[] args)
         {
-            exercise3();
+            exercise4();
         }
+        //Helper functions
         static void getInput(string prompt, out int output)// much code reuse. many lazy. wow.
         {
             string input;
@@ -36,6 +37,21 @@ namespace _16._10._3___In_Class_Exercise
                 getInput(prompt, out output);
             }
         }
+        public static bool isPrime(long number)//Slightly modified from: http://stackoverflow.com/questions/15743192/check-if-number-is-prime-number (Not going to write this if I don't have to)
+        {
+            if (number == 1) return false;
+            if (number == 2) return true;
+
+            var boundary = (long)Math.Floor(Math.Sqrt(number));
+
+            for (int i = 2; i <= boundary; ++i)
+            {
+                if (number % i == 0) return false;
+            }
+
+            return true;
+        }
+        //The Actual functions we are writing.
         static void exercise1()
         {
             for(int i=1; i<21; i++)
@@ -87,5 +103,13 @@ namespace _16._10._3___In_Class_Exercise
             }
             Console.WriteLine("The {0}th term of the Fibbonachi sequence is {1}", numTerms, b);
         }
+        static void exercise4(long toFind = 600851475143)//... Oh joy ... prime numbers ... blerg ...
+        {
+            long i=toFind-1;
+            //If i isn't less than zero, and i isn't prime and what we are looking for modulo i isn't zero, we continue.
+            for (; i>0&&!isPrime(i)&&toFind%i!=0; i--) ;
+            Console.WriteLine("The Largest prime factor of {0} is {1}", toFind, i);
+        }
+
     }
 }
