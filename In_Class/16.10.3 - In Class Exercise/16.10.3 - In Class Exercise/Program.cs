@@ -8,9 +8,33 @@ namespace _16._10._3___In_Class_Exercise
 {
     class Program
     {
-        static void Main(string[] args)
+
+        
+    static void Main(string[] args)
         {
             exercise3();
+        }
+        static void getInput(string prompt, out int output)// much code reuse. many lazy. wow.
+        {
+            string input;
+            Console.Write(prompt + ": ");
+            input = Console.ReadLine();
+            if (!int.TryParse(input, out output))
+            {
+                Console.WriteLine("Please enter an integer.");
+                getInput(prompt, out output);
+            }
+        }
+        static void getInput(string prompt, out uint output)// much code reuse. many lazy. wow.
+        {
+            string input;
+            Console.Write(prompt + ": ");
+            input = Console.ReadLine();
+            if (!uint.TryParse(input, out output))
+            {
+                Console.WriteLine("Please enter a positive integer.");
+                getInput(prompt, out output);
+            }
         }
         static void exercise1()
         {
@@ -38,28 +62,6 @@ namespace _16._10._3___In_Class_Exercise
             }
 
             Console.WriteLine("Smallest Value: {0}\nSecond Smallest Value: {1}", smallest, secSmallest);
-        }
-        static void getInput(string prompt, out int output)// much code reuse. many lazy. wow.
-        {
-            string input;
-            Console.Write(prompt + ": ");
-            input = Console.ReadLine();
-            if (!int.TryParse(input, out output))
-            {
-                Console.WriteLine("Please enter an integer.");
-                getInput(prompt, out output);
-            }
-        }
-        static void getInput(string prompt, out uint output)// much code reuse. many lazy. wow.
-        {
-            string input;
-            Console.Write(prompt + ": ");
-            input = Console.ReadLine();
-            if (!uint.TryParse(input, out output))
-            {
-                Console.WriteLine("Please enter a positive integer.");
-                getInput(prompt, out output);
-            }
         }
         static void exercise3()//Fibbonachi sequence ... fun ...
         {
