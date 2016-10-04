@@ -55,10 +55,10 @@ namespace _16._10._3___In_Class_Exercise
             string input;
             Console.Write(prompt + ": ");
             input = Console.ReadLine();
-            if (uint.TryParse(input, out output))
+            if (!uint.TryParse(input, out output))
             {
-                Console.WriteLine("Please enter an integer.");
-                return getInput(prompt, out output);
+                Console.WriteLine("Please enter a positive integer.");
+                getInput(prompt, out output);
             }
         }
         static void exercise3()//Fibbonachi sequence ... fun ...
