@@ -12,7 +12,7 @@ namespace _16._10._3___In_Class_Exercise
         
     static void Main(string[] args)
         {
-            exercise4();
+            exercise5();
         }
         //Helper functions
         static void getInput(string prompt, out int output)// much code reuse. many lazy. wow.
@@ -37,7 +37,7 @@ namespace _16._10._3___In_Class_Exercise
                 getInput(prompt, out output);
             }
         }
-        public static bool isPrime(long number)//Slightly modified from: http://stackoverflow.com/questions/15743192/check-if-number-is-prime-number (Not going to write this if I don't have to)
+        static bool isPrime(long number)//Slightly modified from: http://stackoverflow.com/questions/15743192/check-if-number-is-prime-number (Not going to write this if I don't have to)
         {
             if (number == 1) return false;
             if (number == 2) return true;
@@ -52,6 +52,24 @@ namespace _16._10._3___In_Class_Exercise
             return true;
         }
         //The Actual functions we are writing.
+        static bool isPalendrome(string testee)
+        {
+            string sideA;
+            string sideB;
+            if (testee.Length % 2 == 1)//if the string is odd
+            {
+                sideA = testee.Substring(0, (testee.Length-1) / 2);//get the left side, minus the center character
+                sideB = testee.Substring((((testee.Length -1)/ 2) + 1));//get the right side minus the center character
+            }
+            else
+            {
+                sideA = testee.Substring(0, testee.Length / 2);
+                sideB = testee.Substring(testee.Length / 2);
+            }
+            char[] sideBArray = sideB.ToCharArray();
+            Array.Reverse(sideBArray);
+            return sideA.Equals(new string(sideBArray));
+        }
         static void exercise1()
         {
             for(int i=1; i<21; i++)
@@ -110,6 +128,18 @@ namespace _16._10._3___In_Class_Exercise
             for (; i>0&&!isPrime(i)&&toFind%i!=0; i--) ;
             Console.WriteLine("The Largest prime factor of {0} is {1}", toFind, i);
         }
-
+        static void exercise5()//Ah crap ... we are getting into palandromes ... oh joy ...
+        {
+            //Note we are only interested in the largest ... and we are not afraid to brute force.\
+            int max = int.MinValue;
+            for(int i=0; i<1000; i++)
+            {
+                for(int j=0; j<1000; j++)
+                {
+                    if (isPalendrome((i * j).ToString())) max = Math.Max(max, i * j);
+                }
+            }
+            Console.WriteLine("Largest Palendrome of two three digit integers: {0}", max);
+        }
     }
 }
