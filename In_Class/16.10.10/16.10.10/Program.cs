@@ -8,7 +8,12 @@ namespace _16._10._10
 {
     class Program
     {
-        static IComparable Maximum(IComparable  a, IComparable b)
+        enum NAMES
+        {
+            SNAKE_EYES=2,
+
+        }
+        static IComparable Maximum(IComparable  a, IComparable b)//Ok, interfaces are a thing in C# ... now how the hell do I use them ...
         {
             return (a.CompareTo(b)<0) ? a : b;//And here comes the single line ifs ... oh no ...
         }
