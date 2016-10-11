@@ -72,6 +72,13 @@ namespace _16._10._10
     }
     class player:IAttackable
     {
+        /*
+         * _hp  - Hit Points: How much HP this character has
+         * _avo - Avoid: How likely is this character going to dodge
+         * _hit - Hit: How likely this character is going to hit
+         * if _hit+1d20>=_avo then the character hits
+         * _damage - Damage: How much damage this character is going to do.
+         */
         int _hp, _avo, _hit;
         Tuple<int, int, int> _damage;
         Random dice;
