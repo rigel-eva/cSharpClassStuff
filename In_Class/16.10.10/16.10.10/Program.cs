@@ -22,6 +22,7 @@ namespace _16._10._10
             //Console.Write(3.CompareTo(5));
             //Maximum(3,5);
             player p1 = new player();
+            System.Threading.Thread.Sleep(100);//Need a bit of a wait to just have two random seeds ... no sense in having the players use the same dice
             player p2 = new player();
             while (p1.alive && p2.alive)//Well, let's have these two fight!;
             {
