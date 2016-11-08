@@ -12,7 +12,7 @@ namespace Files
 				{
 					for (int i = 1; i < 101; i++)
 					{
-						stream.Write(i+"\n");
+						
 					}
 				}
 				using (StreamReader stream = new StreamReader("numbers.txt"))
