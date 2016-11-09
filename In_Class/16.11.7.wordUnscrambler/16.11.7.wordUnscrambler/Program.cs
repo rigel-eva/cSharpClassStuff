@@ -139,7 +139,7 @@ namespace ConsoleApplication1
 									{
 										foreach (string g in twoCharacter)
 										{
-											foreach (string h in twoCharacter)
+											foreach (string h in fiveCharacter)
 											{
 												string test = a + b + c + d + e + f + g + h;
 												if (validSentince(test, testString))
