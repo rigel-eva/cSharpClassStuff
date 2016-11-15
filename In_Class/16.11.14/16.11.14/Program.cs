@@ -12,7 +12,33 @@ namespace Application
 		}
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			time a = new time();
+			Console.WriteLine(a);
+			fizzbuzz();
+		}
+		//bored ... so ... fizzbuzz?
+		public static void fizzbuzz()
+		{
+			for (int i = 1; i < 100; i++)
+			{
+				if (!(i % 3 == 0 || i % 5 == 0))
+				{
+					Console.Write(i);
+				}
+				else 
+				{
+					if (i % 3 == 0)
+					{
+						Console.Write("Fizz");
+					}
+					if (i % 5 == 0)
+					{
+						Console.Write("Buzz");
+					}
+				}
+
+			Console.Write(Environment.NewLine);
+			}
 		}
 	}
 }
