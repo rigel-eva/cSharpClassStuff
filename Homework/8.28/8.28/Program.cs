@@ -61,13 +61,13 @@ namespace _8._28
                 Console.WriteLine(message[i]);
                 Console.ReadKey();
             }
-            do
+            while (hareLoc < 69 && tortLoc < 69)
             {
                 Console.Clear();
                 Console.SetCursorPosition(hareLoc, 0);
-                Console.Write("🐰");//Trying to be a bit cheeky with the emojis ...
+                Console.Write("H");//Trying to be a bit cheeky with the emojis ...
                 Console.SetCursorPosition(tortLoc, 1);
-                Console.Write("🐢");
+                Console.Write("T");
                 Console.SetCursorPosition(69, 0);
                 Console.Write("│");
                 Console.SetCursorPosition(69, 1);
@@ -82,8 +82,30 @@ namespace _8._28
                 {
                     hareLoc = 0;
                 }
-                Thread.Sleep(1000);//Sleep for 1 sec.
-            } while (hareLoc < 69 || tortLoc < 69);
+                Thread.Sleep(10);//Sleep for 1 sec.
+            }
+            Console.Clear();
+            Console.SetCursorPosition(hareLoc, 0);
+            Console.Write("H");//Trying to be a bit cheeky with the emojis ...
+            Console.SetCursorPosition(tortLoc, 1);
+            Console.Write("T");
+            Console.SetCursorPosition(69, 0);
+            Console.Write("│");
+            Console.SetCursorPosition(69, 1);
+            Console.Write("|");
+            Console.SetCursorPosition(0, 3);
+            if (hareLoc > tortLoc)
+            {
+                Console.WriteLine("Hare wins!");
+            }
+            else if (tortLoc < hareLoc)
+            {
+                Console.WriteLine("Tortoise Wins!");
+            }
+            else
+            {
+                Console.Write("It's a Draw!");
+            }
         }
     }
 }
