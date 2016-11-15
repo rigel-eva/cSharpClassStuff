@@ -12,9 +12,21 @@ namespace Application
 		}
 		public static void Main(string[] args)
 		{
-			time a = new time();
-			Console.WriteLine(a);
-			fizzbuzz();
+			IntegerSet a = new IntegerSet();
+			IntegerSet b = new IntegerSet();
+			a.insertElement(2);
+			a.insertElement(3);
+			a.insertElement(5);
+			b.insertElement(1);
+			b.insertElement(3);
+			b.insertElement(7);
+			Console.WriteLine("A: {0}", a);
+			Console.WriteLine("B: {0}", b);
+			Console.WriteLine("A ∪ B: {0}", a.Union(b));
+			Console.WriteLine("A ∩ B: {0}", a.Intersection(b));
+			Console.WriteLine("A \\ B: {0}", a.SetDifference(b));
+			Console.WriteLine("B \\ A: {0}", b.SetDifference(a));
+			Console.WriteLine("A △ B: {0}", a.SymmetricDifference(b));
 		}
 		//bored ... so ... fizzbuzz?
 		public static void fizzbuzz()
