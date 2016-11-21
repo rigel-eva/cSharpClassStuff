@@ -155,6 +155,7 @@ class conwayCell
             }
             returner += "\n";
         }
+        returner.TrimEnd('\n');
         return returner;
     }
     public static int currentPopulation(ref conwayCell[,] cells)
