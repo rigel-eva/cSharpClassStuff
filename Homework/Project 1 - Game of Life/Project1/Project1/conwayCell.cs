@@ -5,6 +5,7 @@ class conwayCell
 	public enum cellStatus { alive, dead, dying, birthing };//All possible states of a cell
 	private List<conwayCell> neighbors;//Our Neighbors
 	private bool _alive;//Whether or not the cell is alive
+    private bool aliveNextStep;
 	public bool alive
 	{
 		get
@@ -64,7 +65,6 @@ class conwayCell
 				livingCells++;
 			}
 		}
-        Console.Write("");
 		switch (livingCells)
 		{
 			case 2://Survival
@@ -84,20 +84,38 @@ class conwayCell
 	}
 	public void step()
 	{
-		alive = isAliveNextStep();
+		alive = aliveNextStep;
 	}
+    private void prepStep()
+    {
+        aliveNextStep = isAliveNextStep();
+    }
     public override string ToString()
     {
         if (alive)
         {
-            return "▓";
+            return "█";
         }
         else
         {
             return "░";
         }
     }
-#warning should DRY this up
+    public string ToDetailedString()
+    {
+        switch (this.status)
+        {
+            case cellStatus.alive:
+            case cellStatus.dead:
+                return this.ToString();
+            case cellStatus.birthing:
+                return "▓";
+            case cellStatus.dying:
+                return "▒";
+        }
+        return "";
+    }
+    #warning should DRY this up
     public static conwayCell[,] initCells(int width, int height)
 	{
 		conwayCell[,] returner = new conwayCell[height, width];
@@ -156,7 +174,14 @@ class conwayCell
     }
 	public static void step(ref conwayCell[,] cells)
 	{
-		for (int i = 0; i < cells.GetLength(0); i++)
+        for (int i = 0; i < cells.GetLength(0); i++)
+        {
+            for (int j = 0; j < cells.GetLength(1); j++)
+            {
+                cells[i, j].prepStep();
+            }
+        }
+                for (int i = 0; i < cells.GetLength(0); i++)
 		{
 			for (int j = 0; j < cells.GetLength(1); j++)
 			{
@@ -164,19 +189,58 @@ class conwayCell
 			}
 		}
 	}
-    public static string writeArray(ref conwayCell[,] cells)
+    public static string writeArray(ref conwayCell[,] cells, bool descriptive = false)
     {
         string returner = "";
         for(int i=0; i<cells.GetLength(0); i++)
         {
             for(int j=0; j<cells.GetLength(1); j++)
             {
-                returner += cells[i, j];
+                if (descriptive)
+                {
+                    returner += cells[i, j].ToDetailedString();
+                }else
+                {
+                    returner += cells[i, j];
+                }
             }
             returner += "\n";
         }
         returner.TrimEnd('\n');
         return returner;
+    }
+    public static void drawArray(ref conwayCell[,] cells, bool descriptive = false, int row=0, int column=0)
+    {
+        for (int x = 0; x < cells.GetLength(0); x++)
+        {
+            for (int y = 0; y< cells.GetLength(1); y++)
+            {
+                switch (cells[x,y].status)
+                {
+                    case cellStatus.alive:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        break;
+                    case cellStatus.dying:
+                        Console.ForegroundColor = ConsoleColor.DarkGreen;
+                        break;
+                    case cellStatus.dead:
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        break;
+                    case cellStatus.birthing:
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        break;
+                }
+                if (descriptive)
+                {
+                    Console.Write(cells[x, y].ToDetailedString());
+                }else
+                {
+                    Console.Write(cells[x, y]);
+                }
+            }
+            Console.ResetColor();
+            Console.Write("\n");
+        }
     }
     public static int currentPopulation(ref conwayCell[,] cells)
     {

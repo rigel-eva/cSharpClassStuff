@@ -1,7 +1,14 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project1", "Project1\Project1.csproj", "{2D08F10F-F309-4B19-9C53-44579D5A46DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77AC37C2-CBDD-4135-A2DC-7E3CD42CEB27}"
+	ProjectSection(SolutionItems) = preProject
+		koksGalaxy.txt = koksGalaxy.txt
+		stillLife.txt = stillLife.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,5 +20,8 @@ Global
 		{2D08F10F-F309-4B19-9C53-44579D5A46DC}.Debug|x86.Build.0 = Debug|x86
 		{2D08F10F-F309-4B19-9C53-44579D5A46DC}.Release|x86.ActiveCfg = Release|x86
 		{2D08F10F-F309-4B19-9C53-44579D5A46DC}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

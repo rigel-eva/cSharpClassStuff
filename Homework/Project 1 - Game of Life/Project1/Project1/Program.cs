@@ -15,9 +15,10 @@ namespace Project1
         {
             checksums = new List<int>();
             //bool[,] tester = { { false, false }, { false, false } };
-            cells = conwayCell.initCells(80, 24);
+            //cells = conwayCell.initCells(80, 24);
+            cells = conwayCell.initCells(testCaseLoader.load("I:\\User Data\\Sir Rigel\\Documents\\Programing\\C#\\cSharpClassStuff\\Homework\\Project 1 - Game of Life\\Project1\\koksGalaxy.txt"));
             //cells = conwayCell.initCells(tester);
-            switch (runSim(cells, 6000))
+            switch (runSim(cells, 6000,1000,false))
             {
                 case endState.maxTicks:
                     Console.WriteLine("Done! Max Ticks Reached");
@@ -39,7 +40,7 @@ namespace Project1
             returner = BitConverter.ToInt32(md5Hash, 0);
             return returner;
         }
-        public static endState runSim(conwayCell[,] cells, int ticksToRun, int millsecBetweenTicks=100)
+        public static endState runSim(conwayCell[,] cells, int ticksToRun, int millsecBetweenTicks=100, bool color=false, bool descriptive=true)
         {
             int currentChecksum = checksum(conwayCell.writeArray(ref cells));
             int i = 0;
@@ -48,7 +49,14 @@ namespace Project1
             {
                 Console.Clear();
                 checksums.Add(currentChecksum);
-                Console.WriteLine(conwayCell.writeArray(ref cells));
+                if (color)
+                {
+                    conwayCell.drawArray(ref cells, descriptive);
+                }
+                else
+                {
+                    Console.WriteLine(conwayCell.writeArray(ref cells, descriptive));
+                }
                 Console.SetCursorPosition(0, infoPos);
                 Console.Write("Generation {0}/{1}, Current Population: {2}/{3}\n", i + 1, ticksToRun, conwayCell.currentPopulation(ref cells), cells.Length);
                 Thread.Sleep(millsecBetweenTicks);
