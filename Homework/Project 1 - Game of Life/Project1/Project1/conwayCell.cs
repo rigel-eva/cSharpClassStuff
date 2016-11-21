@@ -52,7 +52,6 @@ class conwayCell
     #endregion
     public void addNeighbor(ref conwayCell neighbor)
 	{
-#warning check here first if something goes a bit screwy ... this should allow us to get constant access to our neighbors state ... but just in case.
         neighbors.Add(neighbor);
 	}
 	private bool isAliveNextStep()
@@ -98,6 +97,7 @@ class conwayCell
             return "░";
         }
     }
+#warning should DRY this up
     public static conwayCell[,] initCells(int width, int height)
 	{
 		conwayCell[,] returner = new conwayCell[height, width];
@@ -110,11 +110,31 @@ class conwayCell
                 returner[i, j]= new conwayCell(randomBool);//Inits a random value
 			}
 		}
-        for (int i = 0; i < width - 1; i++)
+        for (int i = 0; i < width; i++)
         {
-            for (int j = 0; j < height - 1; j++)
+            for (int j = 0; j < height; j++)
             {
                 addNeighbors(ref returner, j,i);
+            }
+        }
+        return returner;
+    }
+    public static conwayCell[,] initCells(bool[,] values)
+    {
+        conwayCell[,] returner = new conwayCell[values.GetLength(0), values.GetLength(1)];
+        Random rand = new Random();
+        for (int i = 0; i < values.GetLength(0); i++)
+        {
+            for (int j = 0; j < values.GetLength(1); j++)
+            {
+                returner[i, j] = new conwayCell(values[i,j]);//Inits a random value
+            }
+        }
+        for (int i = 0; i < values.GetLength(0); i++)
+        {
+            for (int j = 0; j < values.GetLength(1); j++)
+            {
+                addNeighbors(ref returner, j, i);
             }
         }
         return returner;

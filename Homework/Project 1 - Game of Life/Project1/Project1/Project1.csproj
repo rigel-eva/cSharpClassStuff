@@ -37,5 +37,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="conwayCell.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Project1-TheGameOfLife.doc" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
