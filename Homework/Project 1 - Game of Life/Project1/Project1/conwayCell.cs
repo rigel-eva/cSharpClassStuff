@@ -2,93 +2,58 @@
 using System.Collections.Generic;
 class conwayCell
 {
-	public enum cellStatus { alive, dead, dying, birthing };//All possible states of a cell
-	private List<conwayCell> neighbors;//Our Neighbors
-	private bool _alive;//Whether or not the cell is alive
+    public enum cellStatus { alive, dead, dying, birthing };//All possible states of a cell
+    #region global variables
+    private List<conwayCell> neighbors;//Our Neighbors
     private bool aliveNextStep;
-	public bool alive
-	{
-		get
-		{
-			return _alive;
-		}
-		private set
-		{
-			_alive = value;
-		}
-	}
-	public cellStatus status
-	{
-		get
-		{
-			bool nextStep = isAliveNextStep();
-			if (alive && nextStep)
-			{
-				return cellStatus.alive;
-			}
-			else if (!alive && nextStep)
-			{
-				return cellStatus.birthing;
-			}
-			else if (alive && !nextStep)
-			{
-				return cellStatus.dying;
-			}
-			else {
-				return cellStatus.dead;
-			}
-		}
-	}
-    #region Constructors
-    public conwayCell()
-	{
-		alive = false;
-        neighbors = new List<conwayCell>();
-	}
-	public conwayCell(bool alive)
-	{
-		this.alive = alive;
-        neighbors = new List<conwayCell>();
+    private bool _alive;//Whether or not the cell is alive
+    #endregion
+    #region properties
+    public bool alive
+    {
+        get
+        {
+            return _alive;
+        }
+        private set
+        {
+            _alive = value;
+        }
+    }
+    public cellStatus status
+    {
+        get
+        {
+            bool nextStep = isAliveNextStep();
+            if (alive && nextStep)
+            {
+                return cellStatus.alive;
+            }
+            else if (!alive && nextStep)
+            {
+                return cellStatus.birthing;
+            }
+            else if (alive && !nextStep)
+            {
+                return cellStatus.dying;
+            }
+            else
+            {
+                return cellStatus.dead;
+            }
+        }
     }
     #endregion
-    public void addNeighbor(ref conwayCell neighbor)
-	{
-        neighbors.Add(neighbor);
-	}
-	private bool isAliveNextStep()
-	{
-		int livingCells = 0;
-		for (int i = 0; i < neighbors.Count; i++)
-		{
-			if (neighbors[i].alive)
-			{
-				livingCells++;
-			}
-		}
-		switch (livingCells)
-		{
-			case 2://Survival
-				return true && alive;//Quick and dirty way to ensure that cells that were dead stay dead.
-			case 3://Survival/Birth
-				return true;
-			case 0://lonelyness
-			case 1://lonelyness
-			case 4://overpopulation
-			case 5://overpopulation
-			case 6://overpopulation
-			case 7://overpopulation
-			case 8://overpopulation
-			default:
-				return false;
-		}
-	}
-	public void step()
-	{
-		alive = aliveNextStep;
-	}
-    private void prepStep()
+    #region Constructors
+    public conwayCell()
     {
-        aliveNextStep = isAliveNextStep();
+        alive = false;
+        neighbors = new List<conwayCell>();
+    }
+    public conwayCell(bool alive)
+    {
+        this.alive = alive;
+        neighbors = new List<conwayCell>();
     }
     public override string ToString()
     {
@@ -115,24 +80,35 @@ class conwayCell
         }
         return "";
     }
- //   #warning should DRY this up
+    #endregion
+    #region public methods
+    public void addNeighbor(ref conwayCell neighbor)
+    {
+        neighbors.Add(neighbor);
+    }
+    public void step()
+    {
+        alive = aliveNextStep;
+    }
+    #endregion
+    #region Array Methods
     public static conwayCell[,] initCells(int width, int height)
-	{
-		conwayCell[,] returner = new conwayCell[height, width];
-		Random rand = new Random();
-		for (int i = 0; i < height; i++)
-		{
-			for (int j = 0; j < width; j++)
-			{
+    {
+        conwayCell[,] returner = new conwayCell[height, width];
+        Random rand = new Random();
+        for (int i = 0; i < height; i++)
+        {
+            for (int j = 0; j < width; j++)
+            {
                 bool randomBool = rand.NextDouble() >= 0.5;
-                returner[i, j]= new conwayCell(randomBool);//Inits a random value
-			}
-		}
+                returner[i, j] = new conwayCell(randomBool);//Inits a random value
+            }
+        }
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
-                addNeighbors(ref returner, j,i);
+                addNeighbors(ref returner, j, i);
             }
         }
         return returner;
@@ -145,35 +121,20 @@ class conwayCell
         {
             for (int j = 0; j < values.GetLength(1); j++)
             {
-                returner[i, j] = new conwayCell(values[i,j]);//Inits a random value
+                returner[i, j] = new conwayCell(values[i, j]);//Inits a random value
             }
         }
         for (int i = 0; i < values.GetLength(0); i++)
         {
             for (int j = 0; j < values.GetLength(1); j++)
             {
-                addNeighbors(ref returner, i,j);
+                addNeighbors(ref returner, i, j);
             }
         }
         return returner;
     }
-    private static void addNeighbors(ref conwayCell[,] cellList, int x, int y)
+    public static void step(ref conwayCell[,] cells)
     {
-        Console.Write("");
-        for (int i = x - 1; i < x + 2; i++)
-        {
-            for(int j=y-1; j<y+2; j++)
-            {
-                Console.Write("");
-                if (!(i < 0 || i > cellList.GetLength(0)-1 || j < 0 || j > cellList.GetLength(1)-1||(i==x&&j==y)))//As long as we arn't trying to add ourself, or trying to add something out of range ... 
-                {
-                    cellList[x, y].addNeighbor(ref cellList[i, j]);
-                }
-           } 
-        }
-    }
-	public static void step(ref conwayCell[,] cells)
-	{
         for (int i = 0; i < cells.GetLength(0); i++)
         {
             for (int j = 0; j < cells.GetLength(1); j++)
@@ -181,25 +142,26 @@ class conwayCell
                 cells[i, j].prepStep();
             }
         }
-                for (int i = 0; i < cells.GetLength(0); i++)
-		{
-			for (int j = 0; j < cells.GetLength(1); j++)
-			{
-				cells[i, j].step();
-			}
-		}
-	}
+        for (int i = 0; i < cells.GetLength(0); i++)
+        {
+            for (int j = 0; j < cells.GetLength(1); j++)
+            {
+                cells[i, j].step();
+            }
+        }
+    }
     public static string writeArray(ref conwayCell[,] cells, bool descriptive = false)
     {
         string returner = "";
-        for(int i=0; i<cells.GetLength(0); i++)
+        for (int i = 0; i < cells.GetLength(0); i++)
         {
-            for(int j=0; j<cells.GetLength(1); j++)
+            for (int j = 0; j < cells.GetLength(1); j++)
             {
                 if (descriptive)
                 {
                     returner += cells[i, j].ToDetailedString();
-                }else
+                }
+                else
                 {
                     returner += cells[i, j];
                 }
@@ -209,13 +171,13 @@ class conwayCell
         returner.TrimEnd('\n');
         return returner;
     }
-    public static void drawArray(ref conwayCell[,] cells, bool descriptive = false, int row=0, int column=0)
+    public static void drawArray(ref conwayCell[,] cells, bool descriptive = false, int row = 0, int column = 0)
     {
         for (int x = 0; x < cells.GetLength(0); x++)
         {
-            for (int y = 0; y< cells.GetLength(1); y++)
+            for (int y = 0; y < cells.GetLength(1); y++)
             {
-                switch (cells[x,y].status)
+                switch (cells[x, y].status)
                 {
                     case cellStatus.alive:
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -233,7 +195,8 @@ class conwayCell
                 if (descriptive)
                 {
                     Console.Write(cells[x, y].ToDetailedString());
-                }else
+                }
+                else
                 {
                     Console.Write(cells[x, y]);
                 }
@@ -245,9 +208,9 @@ class conwayCell
     public static int currentPopulation(ref conwayCell[,] cells)
     {
         int returner = 0;
-        for(int i=0; i<cells.GetLength(0); i++)
+        for (int i = 0; i < cells.GetLength(0); i++)
         {
-            for(int j=0; j<cells.GetLength(1); j++)
+            for (int j = 0; j < cells.GetLength(1); j++)
             {
                 if (cells[i, j].alive)
                 {
@@ -257,4 +220,53 @@ class conwayCell
         }
         return returner;
     }
+    #endregion
+    #region private methods
+    private bool isAliveNextStep()
+    {
+        int livingCells = 0;
+        for (int i = 0; i < neighbors.Count; i++)
+        {
+            if (neighbors[i].alive)
+            {
+                livingCells++;
+            }
+        }
+        switch (livingCells)
+        {
+            case 2://Survival
+                return true && alive;//Quick and dirty way to ensure that cells that were dead stay dead.
+            case 3://Survival/Birth
+                return true;
+            case 0://lonelyness
+            case 1://lonelyness
+            case 4://overpopulation
+            case 5://overpopulation
+            case 6://overpopulation
+            case 7://overpopulation
+            case 8://overpopulation
+            default:
+                return false;
+        }
+    }
+    private void prepStep()
+    {
+        aliveNextStep = isAliveNextStep();
+    }
+    private static void addNeighbors(ref conwayCell[,] cellList, int x, int y)
+    {
+        Console.Write("");
+        for (int i = x - 1; i < x + 2; i++)
+        {
+            for (int j = y - 1; j < y + 2; j++)
+            {
+                Console.Write("");
+                if (!(i < 0 || i > cellList.GetLength(0) - 1 || j < 0 || j > cellList.GetLength(1) - 1 || (i == x && j == y)))//As long as we arn't trying to add ourself, or trying to add something out of range ... 
+                {
+                    cellList[x, y].addNeighbor(ref cellList[i, j]);
+                }
+            }
+        }
+    }
+    #endregion
 }

@@ -75,6 +75,5 @@ namespace Project1
                 return endState.noPopulation;
             }
         }
-
-}
+    }
 }
