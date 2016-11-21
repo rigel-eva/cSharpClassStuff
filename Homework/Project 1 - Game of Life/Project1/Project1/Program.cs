@@ -14,11 +14,10 @@ namespace Project1
         public static void Main(string[] args)
         {
             checksums = new List<int>();
-            //bool[,] tester = { { false, false }, { false, false } };
-            //cells = conwayCell.initCells(80, 24);
-            cells = conwayCell.initCells(testCaseLoader.load("I:\\User Data\\Sir Rigel\\Documents\\Programing\\C#\\cSharpClassStuff\\Homework\\Project 1 - Game of Life\\Project1\\koksGalaxy.txt"));
-            //cells = conwayCell.initCells(tester);
-            switch (runSim(cells, 6000,1000,false))
+            cells = conwayCell.initCells(80, 24);
+            //Example on how to load in a custom board from a text file
+            //cells = conwayCell.initCells(testCaseLoader.load("I:\\User Data\\Sir Rigel\\Documents\\Programing\\C#\\cSharpClassStuff\\Homework\\Project 1 - Game of Life\\Project1\\glider.txt"));
+            switch (runSim(cells, 6000))
             {
                 case endState.maxTicks:
                     Console.WriteLine("Done! Max Ticks Reached");

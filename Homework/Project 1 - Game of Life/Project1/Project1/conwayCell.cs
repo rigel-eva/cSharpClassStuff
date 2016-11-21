@@ -115,7 +115,7 @@ class conwayCell
         }
         return "";
     }
-    #warning should DRY this up
+ //   #warning should DRY this up
     public static conwayCell[,] initCells(int width, int height)
 	{
 		conwayCell[,] returner = new conwayCell[height, width];
@@ -152,7 +152,7 @@ class conwayCell
         {
             for (int j = 0; j < values.GetLength(1); j++)
             {
-                addNeighbors(ref returner, j, i);
+                addNeighbors(ref returner, i,j);
             }
         }
         return returner;

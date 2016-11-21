@@ -6,6 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project1", "Project1\Projec
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77AC37C2-CBDD-4135-A2DC-7E3CD42CEB27}"
 	ProjectSection(SolutionItems) = preProject
+		glider.txt = glider.txt
 		koksGalaxy.txt = koksGalaxy.txt
 		stillLife.txt = stillLife.txt
 	EndProjectSection
