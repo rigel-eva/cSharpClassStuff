@@ -6,7 +6,15 @@ namespace Application
 	{
 		public static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			object v;//BEHOLD THE BASE OBJECT CLASS
+
 		}
+	}
+	class class1//base class
+	{
+		
+	}
+	class subclass1 : class1//sub class
+	{
 	}
 }
