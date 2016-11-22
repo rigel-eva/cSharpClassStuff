@@ -10,6 +10,8 @@ namespace Application
 
 		}
 	}
+	//DON'T CALL A VIRTUAL FUNCTION IN YOUR CONSTRUCTOR
+	//CThings are constructed top to bottom
 	class class1//base class
 	{
 		

@@ -56,7 +56,7 @@ namespace Project1
                 {
                     Console.WriteLine(conwayCell.writeArray(ref cells, descriptive));
                 }
-                Console.SetCursorPosition(0, infoPos);
+                //Console.SetCursorPosition(0, infoPos);
                 Console.Write("Generation {0}/{1}, Current Population: {2}/{3}\n", i + 1, ticksToRun, conwayCell.currentPopulation(ref cells), cells.Length);
                 Thread.Sleep(millsecBetweenTicks);
                 conwayCell.step(ref cells);
