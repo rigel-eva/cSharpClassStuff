@@ -55,6 +55,7 @@ namespace Project_2___LINQ
             ownership[18] = new owner(6, 2, 11, 1);
             ownership[19] = new owner(7, 7, 8, 1);
             ownership[20] = new owner(8, 8, 9, 1);
+            //Load our menu function
             menu();
         }
         static void menu()
