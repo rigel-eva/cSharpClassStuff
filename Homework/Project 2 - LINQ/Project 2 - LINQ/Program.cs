@@ -55,7 +55,49 @@ namespace Project_2___LINQ
             ownership[18] = new owner(6, 2, 11, 1);
             ownership[19] = new owner(7, 7, 8, 1);
             ownership[20] = new owner(8, 8, 9, 1);
-            pokeQuery();
+            menu();
+        }
+        static void menu()
+        {
+            string input = "";
+            do
+            {
+                Console.Clear();
+                int selection = -1;
+                Console.Write(
+                    "Project 2 LINQ: Main Menu\n" +
+                    "  1. Print out Contents from all arrays\n" +
+                    "  2. Get a city name, then using a query display all player nicknames from that city\n" +
+                    "  3. Get an attack value the using a query display all pokemon with attack values greater than or equal to said attack value\n" +
+                    "  4. do the same thing that we did with attack values for defense values ...\n" +
+                    "  5. get a player string value||id and display a list of pokemon owned, and their corisponding values\n" +
+                    "Selection (or q to quit):>");
+                input = Console.ReadLine();
+                Console.Clear();
+                if(int.TryParse(input, out selection))
+                {
+                    switch (selection)
+                    {
+                        case 1:
+                            printArrays();
+                            break;
+                        case 2:
+                            cityQuary();
+                            break;
+                        case 3:
+                            attackValue();
+                            break;
+                        case 4:
+                            defenseValue();
+                            break;
+                        case 5:
+                            pokeQuery();
+                            break;
+                    }
+                    Console.WriteLine("Press Any Key to continue...");
+                    Console.ReadKey();
+                }
+            } while (input.ToLower()[0] != 'q');
         }
         //1. Print out the contents of all arrays
         static void printArrays()
